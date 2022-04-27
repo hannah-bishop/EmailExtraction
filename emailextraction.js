@@ -1,8 +1,8 @@
 const fs = require('fs')
 const file = fs.readFileSync('test.txt','utf8')
 //parts 2 and 3
-const regEx = /\w+@\w+(\.\w+)+\b/g
-const regEx2 = /@\w+(\.\w+)+\b/g
+const regEx = /\w+@[\w-]+(\.\w+)+\b/g
+const regEx2 = /@[\w-]+(\.\w+)+\b/g
 const matches = file.match(regEx)
 const matchesDomains = file.match(regEx2)
 
@@ -15,7 +15,6 @@ for (let i=0; i< matchesDomains.length; i++){
         domains[matchesDomains[i]] ++
     }
 }
-console.log(matchesDomains.length)
 
 let domains_array = []
 for (let domainName in domains){
