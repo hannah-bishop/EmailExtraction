@@ -38,3 +38,17 @@ for (let k=0; k<domains_array.length; k++){
         console.log(domains_array[k][1])
     }
 }
+
+//Stretch goal 3
+const regEx3 = /@[\w-]+\./g
+const highOrdMatch = file.match(regEx3)
+let highOrdObj = {}
+for (let l=0; l< highOrdMatch.length; l++){
+    if (highOrdObj[highOrdMatch[l]] === undefined){
+        highOrdObj[highOrdMatch[l]]=1
+    } else {
+        highOrdObj[highOrdMatch[l]] ++
+    }
+}
+
+console.log(highOrdObj)
