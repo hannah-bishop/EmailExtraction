@@ -1,11 +1,11 @@
 const fs = require('fs')
+const prompt = require("prompt-sync")()
 const file = fs.readFileSync('test.txt','utf8')
 //parts 2 and 3
-const regEx = /\w+@[\w-]+(\.\w+)+\b/g
-const regEx2 = /@[\w-]+(\.\w+)+\b/g
-const matches = file.match(regEx)
-const matchesDomains = file.match(regEx2)
 
+const regEx2 = /\b(\S+)@(\S+)\b/g
+const matchesArr = [...file.matchAll(regEx2)]
+const matchesDomains = matchesArr.map(match => match[2])
 const domains = {}
 
 for (let i=0; i< matchesDomains.length; i++){
@@ -31,7 +31,7 @@ for (let j=0; j<10; j++){
 }
 
 //Stretch Goal 2
-desiredFrequency = 63
+desiredFrequency = prompt('Please enter the number ')
 console.log(`The domains that occur ${desiredFrequency} times or over are: `)
 for (let k=0; k<domains_array.length; k++){
     if (domains_array[k][0] >= desiredFrequency){
