@@ -16,15 +16,19 @@ for (let i=0; i< matchesDomains.length; i++){
         domains[matchesDomains[i]] ++
     }
 }
-console.log(domains)
 
-let frequencyCount = 0
-let mostFreqDom = ''
+
+let domains_array = []
 for (let domainName in domains){
-    if (domains[domainName] > frequencyCount){
-        frequencyCount = domains[domainName]
-        mostFreqDom = domainName
-    }
+    domains_array.push([domains[domainName],domainName])
 }
 
-console.log(`The most common domain is ${mostFreqDom} with a frequency of ${frequencyCount}`)
+domains_array.sort((a, b) => b[0] - a[0])
+console.log(`The most common domain is ${domains_array[0][1]} with a frequency of ${domains_array[0][0]}`)
+
+
+console.log('The 10 most common domains and their frequeny are:')
+for (let j=0; j<10; j++){
+    console.log(domains_array[j][1], domains_array[j][0])
+}
+
